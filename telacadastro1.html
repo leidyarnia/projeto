@@ -51,7 +51,7 @@ const continuacaoEndPoint = new URLSearchParams(capture);
 const enderecoEmail = continuacaoEndPoint.get('email');
 
 const formSenha = document.querySelector('#formSenha');
-const url = `http://localhost:3000/usuarios?email=${enderecoEmail}`;
+const url = `https://projeto-wexer.onrender.com/usuarios?email=${enderecoEmail}`;
 
 formSenha.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -67,7 +67,7 @@ formSenha.addEventListener('submit', async (event) => {
 
   const id = usuario.id;
 
-  const responsePatch = await fetch(`http://localhost:3000/usuarios/${id}`, {
+  const responsePatch = await fetch(`https://projeto-wexer.onrender.com/usuarios/${id}`, {
     method: 'PATCH',
     headers: {
       'Accept': 'application/json,text/plain,*/*',

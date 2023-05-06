@@ -36,7 +36,7 @@ async function pegaInformation() {
 }
 
 async function criarPaciente(dados) {
-    await fetch('http://localhost:3000/pacientes', {
+    await fetch('https://projeto-wexer.onrender.com/pacientes', {
         method: 'POST',
         headers: {
             'Accept': 'application/json,text/plain,/',
@@ -88,7 +88,7 @@ async function listarPacientes() {
 
 
 listar = async () => {
-    requisicao = await fetch("http://localhost:3000/pacientes")
+    requisicao = await fetch("https://projeto-wexer.onrender.com/pacientes")
     dados = await requisicao.json()
     return dados
 }
@@ -96,7 +96,7 @@ listar = async () => {
 listarPacientes()
 
  async function pegaPacienteId (idPaciente){
- const cliente =await fetch (`http://localhost:3000/pacientes/${idPaciente}`)
+ const cliente =await fetch (`https://projeto-wexer.onrender.com/pacientes/${idPaciente}`)
  const clienteJson = await cliente.json()
  return clienteJson
 }
@@ -145,7 +145,7 @@ const pacienteResponse = await pegaPacienteId(idPaciente)
     })
 }
 async function editaPaciente(idPaciente, dadosPacienteEditado) {
-  return fetch(`http://localhost:3000/pacientes/${idPaciente}`, {
+  return fetch(`https://projeto-wexer.onrender.com/pacientes/${idPaciente}`, {
       method: 'PUT',
       headers: {
           'Accept': 'application/json,text/plain,/',
@@ -198,7 +198,7 @@ console.log(pacienteResponse)
     console.log('deletando paciente')
     if (confirm("Tem certeza que deseja deletar esse paciente?")) {
       try {
-        await fetch(`http://localhost:3000/pacientes/${idPaciente}`, {
+        await fetch(`https://projeto-wexer.onrender.com/pacientes/${idPaciente}`, {
           method: 'DELETE'
         });
         listarPacientes(); // atualiza a lista de pacientes após a remoção
