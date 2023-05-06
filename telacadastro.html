@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>tela-de-cadastro</title>
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="container">
+          <div class="row align-items-center position-absolute top-50 start-50 translate-middle  ">
+            <div class="col-md-12 mx-auto">
+              <form id="form" class=" card p-md-5 border rounded-3 bg-light">
+                <img class="logopsi mx-5" src="./images/logo-cadastro.png" alt="logo-psi1">
+                <div class="col-12 bold text-center"><p class="bv">Seja bem vindo(a)!</p></div>
+                <div class="col-12 text-center"><p class="dados">Preencha os campos para se cadastrar</p></div>
+                <div class="mb-2">
+                  <label for="name" class="cadastro">Nome</label>
+                  <input type="text" class="form-control" id="name">
+                </div>
+                <div class="mb-4">
+                    <label for="exampleInputEmail" class="cadastro">E-mail</label>
+                    <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp">
+                </div>
+                <div class="col-12 text-end">
+                  <button type="submit" class="botao w-50 border rounded-3 btn btn-success">
+                    Prosseguir <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+             </form>
+            </div>
+           </div>
+     </div>
+     <script>
+      const form = document.getElementById('form');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('exampleInputEmail').value;
+        const data = { name, email };
+        fetch('http://localhost:3000/usuarios', {
+          method: 'POST',
+          headers: { 
+            'Accept': 'application/json,text/plain,*/*',
+            'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Success:', data);
+            window.location.href = `telacadastro1.html?email=${email}`;
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      });
+    </script>
+     <link rel="stylesheet" href="style1.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9d6da714d8.js" crossorigin="anonymous"></script>
+  </body>
+</html>
